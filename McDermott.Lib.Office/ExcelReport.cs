@@ -110,27 +110,34 @@ namespace McDermott.Lib.Office
 
             
             uint rowIndex = 1;
+            // Create additional rows above header row
 
             writer.WriteStartElement(new Row { RowIndex = rowIndex });
-            // Create additional rows above header row
-            //AppendTextCell("1", "report title: "+_title, ref writer, 1);
-            //++rowIndex;
-            //writer.WriteEndElement();
-            //writer.WriteStartElement(new Row { RowIndex = rowIndex });
-            //AppendTextCell("1", "printed at: "+_printedDate, ref writer, 1);
-            //++rowIndex;
-            //writer.WriteEndElement();
-            //writer.WriteStartElement(new Row { RowIndex = rowIndex });
-            //AppendTextCell("1", "comments: "+_comments, ref writer, 1);
-            //++rowIndex;
-            //writer.WriteEndElement();
+            AppendTextCell("A" + rowIndex.ToString(), "report title: " + _title, ref writer, 1);
+            ++rowIndex;
+            writer.WriteEndElement();
+            writer.WriteStartElement(new Row { RowIndex = rowIndex });
+            AppendTextCell("A" + rowIndex.ToString(), "printed at: " + _printedDate, ref writer, 1);
+            ++rowIndex;
+            writer.WriteEndElement();
+            writer.WriteStartElement(new Row { RowIndex = rowIndex });
+            AppendTextCell("A" + rowIndex.ToString(), "comments: " + _comments, ref writer, 1);
+            ++rowIndex;
+            writer.WriteEndElement();
+            writer.WriteStartElement(new Row { RowIndex = rowIndex });
+            ++rowIndex;
+            writer.WriteEndElement();
+
+
             //
             //  Create the Header row in our Excel Worksheet
             //
+            writer.WriteStartElement(new Row { RowIndex = rowIndex });
+
             for (int colInx = 0; colInx < numberOfColumns; colInx++)
             {
                 DataColumn col = dt.Columns[colInx];
-                AppendTextCell(excelColumnNames[colInx] + "1", col.ColumnName, ref writer, 2);
+                AppendTextCell(excelColumnNames[colInx] + rowIndex.ToString(), col.ColumnName, ref writer, 2);
                 IsNumericColumn[colInx] = (col.DataType.FullName == "System.Money") || (col.DataType.FullName == "System.Decimal") || 
                     (col.DataType.FullName == "System.Int32") || (col.DataType.FullName == "System.Double") || (col.DataType.FullName == "System.Single");
                 IsDateColumn[colInx] = (col.DataType.FullName == "System.DateTime") || (col.DataType.FullName == "System.Date");
