@@ -226,7 +226,7 @@ namespace McDermott.Lib.Office
         }
 
         //  Convert a zero-based column index into an Excel column reference  (A, B, C.. Y, Y, AA, AB, AC... AY, AZ, B1, B2..)
-        public string GetExcelColumnName(int columnIndex)
+        private string GetExcelColumnName(int columnIndex)
         {
             //  eg  (0) should return "A"
             //      (1) should return "B"
