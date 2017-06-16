@@ -267,16 +267,6 @@ namespace McDermott.Lib.Office
             return string.Format("{0}{1}{2}", firstChar, secondChar, thirdChar);
         }
 
-        private Cell ConstructCell(string value, CellValues dataType, uint styleIndex = 0)
-        {
-            return new Cell()
-            {
-                CellValue = new CellValue(value),
-                DataType = new EnumValue<CellValues>(dataType),
-                StyleIndex = styleIndex
-            };
-        }
-
         private Stylesheet GenerateStylesheet()
         {
             Stylesheet styleSheet = null;
