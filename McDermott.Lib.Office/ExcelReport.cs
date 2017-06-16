@@ -277,7 +277,7 @@ namespace McDermott.Lib.Office
 
                 ),
                 new Font( // Index 1 - header
-                    new FontSize() { Val = 12 },
+                    new FontSize() { Val = 10 },
                     new Bold(),
                     new Color() { Rgb = "FFFFFF" }
 
